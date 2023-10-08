@@ -1,4 +1,4 @@
-"Country","Daily_Smokers","Total smokers","Total Female Smokers","Total Male Smokers","Population","Code","Year","Continent"
+"Country","Daily Smokers","Total_Smokers","Total Female Smokers","Total Male Smokers","Population","Code","Year","Continent"
 "Afghanistan",5,1097508,109966,987543,38928341,"AFG",2015,"Asia"
 "Albania",18,451603,35670,415934,2877800,"ALB",2015,"Europe"
 "Algeria",20,2691324,73242,2618083,43851043,"DZA",2015,"Africa"
