@@ -1,170 +1,164 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    // "config":{
-    //     "legend": {"columns": 2}
-    // },
-    "data": {
-        "url": "https://raw.githubusercontent.com/car121201/FIT3179/main/Assignment2/Smoking_Rank.csv"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/car121201/FIT3179/main/Assignment2/Smoking_Rank.csv"
+  },
+  "title": "Total Smokers Rank by Country Across Continents",
+  "width": 1000,
+  "height": 800,
+  "params": [
+    {
+      "name": "Starting_Year",
+      "value": 1980,
+      "bind": {"input": "range", "min": 1980, "max": 1990, "step": 10}
     },
-    "title": {
-        "text": "Total Smokers Rank by Country Across Continents ( 1980 to 2000 )",
-        "color": "navy",
-        "fontSize": 22,
-        "align": "center",
-        "anchor": "middle",
-        "dy": -1,
-        "baseline": "middle"
+    {
+      "name": "Continent_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "labels": [
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "name": "Continent: "
+      },
+      "value": "North America"
+    }
+  ],
+  "transform": [
+    {
+      "filter": "Continent_selection == null || datum.Continent == Continent_selection"
     },
-    "width": 1000,
-    "height": 800,
-    "params": [
-        {
-            "name": "Starting_Year",
-            "value": 1980,
-            "bind": { "input": "range", "min": 1980, "max": 1990, "step": 10 }
-        },
-        {
-            "name": "Continent_selection",
-            "bind": {
-                "input": "select",
-                "options": ["North America", "South America", "Europe", "Africa", "Asia", "Oceania"],
-                "labels": ["North America", "South America", "Europe", "Africa", "Asia", "Oceania"],
-                "name": "Continent: "
-            },
-            "value": "North America"
-        }
-    ],
-    "transform": [
-        {
-            "filter": "Continent_selection == null || datum.Continent == Continent_selection"
-        },
-        {
-            "sort": [
-                { "field": "Total_Smokers", "order": "descending" }
-            ],
-            "window": [
-                {
-                    "op": "rank",
-                    "as": "rank"
-                }
-            ],
-            "groupby": ["Year", "Continent"]
-        },
-        { "filter": "datum.Year >= Starting_Year && datum.Year <= Starting_Year + 10" }
-    ],
-    "encoding": {
-        "x": {
-            "field": "Year",
-            "type": "ordinal",
-            "axis": { "labelAngle": 0, "labelFontSize": 12, "titleFontSize": 14 },
-            "title": "Year"
-        },
-        "y": {
-            "field": "rank",
-            "type": "ordinal",
-            "sort": "ascending",
-            "axis": {
-                "labelAngle": 0,
-                "labelFontSize": 12,
-                "tickMinStep": 1,
-                "titleFontSize": 14
-            },
-            "title": "Total Smokers ranking"
-        },
-        "order": {
-            "field": "Year", 
-            "type": "quantitative"
-            },
-
-        "color": {
-            "field": "Category", 
-            "type": "nominal", 
-            "scale": {
-                // "scheme": "category20"
-                "range":  
-                ["#0D47A1", "#1A237E", "#01579B", "#0D47A1", "#0A0E6A","#004D40", "#1B5E20", "#33691E", "#AFB42B", "#827717", "#FFA000", "#FF6F00", "#E65100", "#BF360C", "#5D4037", "#3E2723", "#455A64", "#37474F", "#263238", "#607D8B","#004D40", "#1B5E20", "#33691E", "#AFB42B", "#827717", "#FFA000", "#FF6F00", "#E65100", "#BF360C", "#5D4037"]
-
-                    }
-                }
-
-,
-        
-        "tooltip": [ 
-            { "field": "Country", "title": "Country" },
-            { "field": "Total_Smokers", "title": "Total Smokers" },
-            { "field": "rank", "title": "Rank"}
+    {
+      "sort": [{"field": "Total_Smokers", "order": "descending"}],
+      "window": [{"op": "rank", "as": "rank"}],
+      "groupby": ["Year", "Continent"]
+    },
+    {
+      "filter": "datum.Year >= Starting_Year && datum.Year <= Starting_Year + 10"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "axis": {"labelAngle": 0, "labelFontSize": 12, "titleFontSize": 14},
+      "title": "Year"
+    },
+    "y": {
+      "field": "rank",
+      "type": "ordinal",
+      "sort": "ascending",
+      "axis": {
+        "labelAngle": 0,
+        "labelFontSize": 12,
+        "tickMinStep": 1,
+        "titleFontSize": 14
+      },
+      "title": "Total Smokers ranking"
+    },
+    "order": {"field": "Year", "type": "quantitative"},
+    "color": {
+      "field": "Category",
+      "type": "nominal",
+      "scale": {
+        "range": [
+          "#1f77b4",
+          "#aec7e8",
+          "#ff7f0e",
+          "#ffbb78",
+          "#2ca02c",
+          "#98df8a",
+          "#d62728",
+          "#ff9896",
+          "#9467bd",
+          "#c5b0d5",
+          "#8c564b",
+          "#c49c94",
+          "#e377c2",
+          "#f7b6d2",
+          "#7f7f7f",
+          "#c7c7c7",
+          "#bcbd22",
+          "#dbdb8d",
+          "#17becf",
+          "#9edae5",
+          "#393b79",
+          "#5254a3",
+          "#6b6ecf",
+          "#9c9ede",
+          "#637939",
+          "#8ca252",
+          "#b5cf6b",
+          "#cedb9c",
+          "#8c6d31",
+          "#bd9e39",
+          "#ff5733",
+          "#33ff57",
+          "#3357ff",
+          "#ff33a6",
+          "#33ff9a",
+          "#0d47a1",
+          "#01579b",
+          "#0a0e6a",
+          "#004d40",
+          "#827717",
+          "#bf360c",
+          "#e65100",
+          "#ff6f00"
         ]
+      }
     },
-    "layer": [
-        {
-            "mark": {"type": "line", "interpolate": "monotone"},
-            "encoding": {
-                "opacity": {
-                    "condition": {
-                    "param": "country_legend",
-                    "field": "Country",
-                    "value": 1
-                    },
-                    "value": 0.1
-                    },
-                
-              "color": { 
-                // "condition":  {
-                //     "param": "country_legend", 
-                //     "empty": false, 
-                //     "value": "black" 
-                //     },
-                    "field": "Country"
-                    },
-              "size":{
-                "condition":  {
-                    "param": "country_legend", 
-                    "empty": false, 
-                    "value": 4
-                    },
-                "value": 1
-        }
-            }
-        },
-        {
-            "params": [
-                { 
-                    "name": "country_legend", 
-                    "select": {
-                        "type": "point", 
-                        "on": "click", 
-                        "fields": ["Country"] 
-                        },
-                    "bind": "legend"
-                }
-            ],
-            "mark": {
-                "type": "tick", 
-                "thickness": 5, 
-                "orient": "horizontal"
-                },
-            "encoding": {
-                "y": {
-                    "field": "rank"
-                    },
-                "opacity": {
-                    "condition": {
-                    "param": "country_legend",
-                    "field": "Country",
-                    "value": 1
-                    },
-                    "value": 0.2
-                    },
-                
-                "color": {
-                    // "condition":  {
-                    //     "param": "country_legend", 
-                    //     "empty": false,
-                    //     "value": "black" 
-                    //     },
-                    "field": "Country"
-                }
-            }
-        }
+    "tooltip": [
+      {"field": "Country", "title": "Country"},
+      {"field": "Total_Smokers", "title": "Total Smokers"},
+      {"field": "rank", "title": "Rank"}
     ]
+  },
+  "layer": [
+    {
+      "mark": {"type": "line", "interpolate": "monotone"},
+      "encoding": {
+        "color": {"field": "Country"},
+        "size": {
+          "condition": {"param": "country_legend", "empty": false, "value": 4},
+          "value": 0.3
+        }
+      }
+    },
+    {
+      "params": [
+        {
+          "name": "country_legend",
+          "select": {"type": "point", "on": "click", "fields": ["Country"]},
+          "bind": "legend"
+        }
+      ],
+      "mark": {"type": "tick", "thickness": 3, "orient": "horizontal"},
+      "encoding": {
+        "y": {"field": "rank"},
+        "color": {
+          "condition":  {"param": "country_legend", "empty": false, "value": "black"} ,
+          "field": "Country"
+        },
+        "opacity": {
+          "condition": {"param": "country_legend", "value": 1},
+          "value": 0.2
+        }
+      }
+    }
+  ],
+  "config": {}
 }

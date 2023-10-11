@@ -5,38 +5,31 @@
     "url": "https://raw.githubusercontent.com/car121201/FIT3179/main/Assignment2/tabacco_manufacturer.csv"
   },
   "title": {
-    "text" : "Top 10 Tabacco Manufacturer",
-    "color": "navy",
-        "fontSize": 22,
-        "align": "center",
-        "anchor": "middle",
-        "dy": -1,
-        "baseline": "middle"},
+    "text" : "Top 10 Tabacco Manufacturer"},
         
-  "width" : 600,
-  "height" : 400,
+  "width" : 750,
+  "height" : 600,
 
   "layer": [{
     "mark": {
       "type": "arc", 
       "innerRadius": 15, 
-      "stroke": "#D3D3D3"}
-    }],
+      "stroke":"black"}
+    }
+  ],
   
-  "params": [{
-    "name": "highlight",
-    "select": {"type": "point", "on": "mouseover"}
-            },
-            {"name": "select", "select": "point"}
+  "params": [
+    {"name": "highlight", "select": {"type": "point", "on": "mouseover"}},
+    {"name": "select", "select": "point"}
           ],
 
   "encoding": {
     "theta": {
-      "field": "Market Cap (Billion)", 
+      "field": " Market Cap (Billion)", 
       "type": "quantitative", 
       "stack": true},
     "radius": {
-      "field": "Market Cap (Billion)", 
+      "field": " Market Cap (Billion)", 
       "scale": {
         "type": "sqrt", 
         "zero": true, 
@@ -52,7 +45,7 @@
                 "titleFontStyle": "san-serif"
       }},
     "fillOpacity": {
-            "condition": {"param": "select", "value": 1},
+            "condition": {"param": "highlight", "value": 1},
             "value": 0.5
         },
     "strokeWidth": {
@@ -63,14 +56,19 @@
                 "value": 3
               }
             ],
-            "value": 2
+            "value": 1
         },
 
       "tooltip": [
             {"field": "Manufacturer", "type": "nominal", "title": "Manufacturer"},
-            {"field": "Country ", "type": "nominal", "title": "Country"},
-            {"field": "Market Cap (Billion)", "type": "quantitative", "title": "Market Cap (Billion)"}
+            {"field": " Country ", "type": "nominal", "title": "Country"},
+            {"field": " Market Cap (Billion)", "type": "quantitative", "title": "Market Cap (Billion)"}
         ]
-  }
+  },
+  "config": {"style": {
+    "cell": {
+      "stroke": "transparent"
+    }
+  }}
 
 }

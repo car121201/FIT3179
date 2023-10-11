@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+  <style>
+    /* Center the image in the middle and remove borders*/
+
+    .vega-embed > div {
+    border: none;
+  }
+  
+    .element {
+    border: none;
+    }
+
+
+    .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    /* Center the title */
+    .center-title {
+      text-align: center;
+    }
+
+    .sub-heading {
+      font-size: 21px;
+    }
+
+    /* Left-align paragraphs */
+    .left-align {
+      text-align: left;
+    }
+
+    .l-box {
+        padding-left: 1em;
+        padding-right: 4em;
+        font-size: 18px;
+    }
+    .r-box {
+        padding-left: 4em;
+        font-size: 18px;
+    }
+
+    .red-text {
+      color: #FF0000;
+      font-weight: bold;
+    }
+
+    .orange-text {
+      color: #ff8800;
+      font-weight: bold;
+    }
+
+    .green-text {
+      color: #39e75f;
+      font-weight: bold;
+    }
+  </style>
+
+</head>
+
+<!-- title -->
+<body>
+  <div class="pure-g center-title">
+    <div class="pure-u-1">
+      <h1>Smoking Prevalence from 1980 to 2000</h1>
+    </div>
+  </div>
+
+<!-- row 1 -->
+<div class="pure-g">
+  <div class="pure-u-2-1 center-title">
+  <div class="pure-u-1">
+    <div class="l-box">
+      <p>The period from 1980 to 2000 witnessed a significant shift in the fight against smoking prevalence. 
+        Initiatives such as the <span class="red-text">'Great American Smokeout'</span> in <span class="orange-text">1980</span>, <span class="red-text">'World No Tobacco Day'</span> established by the 
+        World Health Organization in <span class="orange-text">1987</span>, and the <span class="red-text">'Truth Campaign'</span> in the <span class="orange-text">2000s</span> reshaped public perception of smoking. 
+        These efforts exposed deceptive marketing strategies and empowered youth to combat the tobacco industry, ultimately
+        leading to reduced smoking rates and marking a crucial era in the battle against tobacco use.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- row 2 -->
+    <div class="pure-g">
+      <div class="pure-u-2-1 center-title">
+      <div class="pure-u-1">
+        <div class="l-box">
+          <h2 class="sub-heading">Worldwide Tobacco Consumption : Counting Smokers in Each Nation</h2>
+          <p>The choropleth map portrays smoking prevalence per 10,000 individuals from 1980 to 2010. 
+            Notably, countries like <span class="red-text">Greece, Bulgaria, Serbia, Latvia, and Ukraine</span> consistently report 
+            the highest rates.</p>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="pure-u-1">
+        <div class="container">
+          <div id="vis1" class="vis-container"></div>
+        </div>
+        </div>
+        
+      </div>
+
+<!-- row 3 -->
+    <div class="pure-g">
+      <div class="pure-u-2-1 center-title">
+        <div class="pure-u-1">
+          <div class="l-box">
+          <h2 class="sub-heading">Market Cap Polar Chart: Unveiling the Tobacco Titans</h2>
+          <p>The global tobacco industry encompasses over <span class="red-text">7 million metric tons of annual production</span> and
+            a $800 billion market. Despite its economic impact, tobacco use causes nearly <span class="red-text">8 million deaths
+              annually</span>, and approximately 20% of adults worldwide are smokers. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+      <div class="pure-u-1">
+        <div class="container">
+        <div id="vis2" class="vis-container"></div>
+      </div>
+    </div>
+
+<!-- row 4 -->
+<div class="pure-g">
+  <div class="pure-u-2-1 center-title">
+    <div class="pure-u-1">
+      <div class="l-box">
+      <h2 class="sub-heading">Male versus Female Smoking Trends: A Population Perspective</h2>
+      <p>This Bubble Plot sheds light on the significance of examining male and female smokers globally. 
+        With approximately <span class="red-text">1.1 billion smokers worldwide</span>, a substantial gender disparity exists, with 
+        <span class="red-text">higher smoking rates among males.</span> </p>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="pure-u-1">
+      <div class="container">
+    <div id="vis3" class="vis-container"></div>
+  </div>
+</div>
+
+<!-- row 5 -->
+    <div class="pure-g">
+      <div class="pure-u-2-1 center-title">
+        <div class="pure-u-1">
+          <div class="l-box">
+          <h2 class="sub-heading">Continental Smoking Trends: Identifying the Pinnacle and Pitfall Nations</h2>
+          <p>This bump chart analyzes the smoking habits of countries across continents over time. 
+             It sheds light on <span class="red-text">global disparities</span> in tobacco use, emphasizing best-performing nations with low rates
+             and worst-performing ones with high rates, spanning a significant time period.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+      <div class="pure-u-1">
+        <div class="container">
+        <div id="vis4" class="vis-container"></div>
+      </div>
+    </div>
+
+
+
+    <div class="pure-g">
+      <div class="pure-u-1-1 small-font">
+        <p>This visualisation is created by <a href="https://fit3179.github.io/Vega-Lite/" target="_blank">FIT3179
+            Teaching Team</a>. The datasource is <a href="#" target=" _blank">some data repository online</href>.</p>
+      </div>
+    </div>
+
+
+  </div> <!-- end page -->
+  <script type="text/javascript">
+    var specVis1 = "./choropleth_map.json";
+    var specVis2 = "./coxcomb_chart.json";
+    var specVis3 = "./bubble_chart.json";
+    var specVis4 = "./bump_chart.json";
+
+    vegaEmbed('#vis1', specVis1, { "actions": false });
+
+    vegaEmbed('#vis2', specVis2, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis3', specVis3, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis4', specVis4, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+  </script></div>
+</body>
+
+</html>
