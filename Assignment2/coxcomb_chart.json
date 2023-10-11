@@ -14,7 +14,7 @@
     "mark": {
       "type": "arc", 
       "innerRadius": 15, 
-      "stroke":"black"}
+      "stroke":"lightgrey"}
     }
   ],
   
