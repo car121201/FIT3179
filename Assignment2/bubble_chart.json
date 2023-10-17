@@ -1,8 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 800,
+  "width": 1000,
   "height": 600,
-  "title": "Global Trends in Male and Female Smoking Prevalence (1980 to 2010)",
+  "background": "#FAF5EF",
+  "description": "Global Trends in Male and Female Smoking Prevalence (1980 to 2010)",
   "data": {
     "url": "https://raw.githubusercontent.com/car121201/FIT3179/main/smoking_proportion.csv"
   },
@@ -73,14 +74,23 @@
   "layer": [
     {
       "mark": "circle",
+      "params": [
+        {
+          "name": "highlight",
+          "select": {
+            "type": "point",
+            "on": "mouseover"
+          }
+        }
+      ],
       "encoding": {
         "size": {
           "field": "Population",
           "type": "quantitative",
           "scale": {
             "type": "threshold",
-            "domain": [100000, 3000000, 10000000, 125000000, 200000000],
-            "range": [10, 40, 80, 120, 160, 200]
+            "domain": [100000, 3000000, 10000000, 25000000, 50000000, 100000000, 1000000000],
+            "range": [10, 70, 130, 250, 400, 600, 900, 1500]
           },
           "legend": {"format": ".1s"}
         },
@@ -106,7 +116,15 @@
             ]
           }
         },
-        "opacity": {"value": 0.6},
+        "opacity": {
+          "condition": [
+            {
+              "param": "highlight",
+              "value": 0.45
+            }
+          ],
+          "value": 0.1
+        },
         "tooltip": [
           {"field": "Country", "type": "nominal"},
           {
@@ -136,14 +154,14 @@
         "baseline": "middle",
         "dx": -12,
         "fontSize": 11.5,
-        "fontStyle": "italic"
+        "fontStyle": "bold"
       },
       "encoding": {
         "text": {"field": "Country", "type": "nominal"},
         "color": {"value": "black"},
         "opacity": {
           "condition": {
-            "test": "datum['Country'] == 'China' || datum['Country'] == 'Singapore' || datum['Country'] == 'Australia' || datum['Country'] == 'New Zealand' || datum['Country'] == 'United States'",
+            "test": "datum['Country'] == 'China' || datum['Country'] == 'Australia' || datum['Country'] == 'Brazil'|| datum['Country'] == 'United States'|| datum['Country'] == 'France'|| datum['Country'] == 'Algeria'",
             "value": 1
           },
           "value": 0

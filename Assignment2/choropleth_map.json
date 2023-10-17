@@ -1,14 +1,56 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Global Smoking Rate from 1980 to 2023",
-  "width": 700,
+  "description": "Global Smoking Rate from 1980 to 200",
+  "width": 900,
   "height": 400,
+  "background": "#FAF5EF",
   "data": {
     "url": "https://raw.githubusercontent.com/car121201/FIT3179/main/Week9Homework/ne_110m_admin_0_countries.topojson",
     "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
   },
   
-  "projection": {"type": "equalEarth"},
+  "projection": {"type": "equalEarth",
+                "center": {"expr": "center_to"},
+                "scale": {"expr": "zoom_level"}
+                },
+
+  "params": [
+    {
+      "name": "zoom_level",
+      "value": 150,
+      "bind": {
+        "input": "range",
+       "min": 0,
+        "max": 400,
+        "step": 20,
+        "name": "Zoom: "
+      }
+    },
+    {
+"name": "center_to",
+"value": [0,0],
+"bind": {
+"input": "select",
+"options": [
+          [0, 0],
+          [9, 1],
+          [90, 20],
+          [20, 130],
+          [-60, -22],
+          [-70, 145],
+          [150, -25]
+],
+"labels": [         
+          "Default",
+          "Africa",
+          "Asia",
+          "Europe",
+          "South America",
+          "North America",
+          "Oceania"],
+"name": "Map Centre: "
+}}
+  ],
   
   "layer": [
 
@@ -59,7 +101,7 @@
             "empty": false,
             "value": "black"
           },
-          "value": "white"
+          "value": "black"
         },
 
         "strokeWidth": {
@@ -68,11 +110,12 @@
             "empty": false,
             "value": 2
           },
-          "value": 0.5
+          "value": 1
         }
       }
       
     },
+    
     {
       "transform": [
         {
@@ -116,7 +159,16 @@
             "empty": false,
             "value": "black"
           },
-          "value": "white"
+          "value": "black"
+        },
+
+        "strokeWidth": {
+          "condition": {
+            "param": "highlight",
+            "empty": false,
+            "value": 2
+          },
+          "value": 1
         },
         "opacity":{
           "condition": {"param": "highlight", "value": 1},
@@ -141,13 +193,24 @@
     {
       "mark": {
         "type": "text",
-        "dx": 0,
-        "dy": -165,
-        "fontSize": 11,
-        "fontWeight":"lighter"
+        "dx": -50,
+        "dy": -140,
+        "fontSize": 11
       },
       "encoding": {
         "text": {"value": ["Europe has", "most smokers", "per 10,000 captita"]},
+        "opacity": {
+          "condition": {
+            "test": {
+              "and": [
+                "zoom_level === 150",
+                "center_to[0] === 0",
+                "center_to[1] === 0"
+              ]
+            },
+            "value": 1
+          },
+          "value": 0},
         "color": {"value": "black"}
       }
     },
@@ -155,20 +218,33 @@
       "mark": {
         "type": "text",
         "dx": 40,
-        "dy": 95,
+        "dy": 110,
         "fontSize": 11,
         "fontWeight":"lighter"
       },
       "encoding": {
         "text": {"value": ["Africa has", "least smokers", "per 10,000 captita"]},
+        "opacity": {
+          "condition": {
+            "test": {
+              "and": [
+                "zoom_level === 150",
+                "center_to[0] === 0",
+                "center_to[1] === 0"
+              ]
+            },
+            "value": 1
+          },
+          "value": 0},
         "color": {"value": "black"}
       }
     }
   ],
 
-      
+
   
-  "config": {"style": {
+  "config": {
+    "style": {
     "cell": {
       "stroke": "transparent"
     }

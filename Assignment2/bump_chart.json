@@ -3,9 +3,10 @@
   "data": {
     "url": "https://raw.githubusercontent.com/car121201/FIT3179/main/Assignment2/Smoking_Rank.csv"
   },
-  "title": "Total Smokers Rank by Country Across Continents",
+  "description": "Total Smokers Rank by Country Across Continents",
   "width": 1000,
   "height": 800,
+  "background": "#FAF5EF",
   "params": [
     {
       "name": "Starting_Year",
@@ -133,13 +134,18 @@
       "encoding": {
         "color": {"field": "Country"},
         "size": {
-          "condition": {"param": "country_legend", "empty": false, "value": 4},
+          "condition": {"param": "highlight", "empty": false, "value": 4},
           "value": 0.3
         }
       }
     },
     {
       "params": [
+        {
+          "name": "highlight",
+          "select": {"type": "point", "on": "mouseover", "fields": ["Country"]},
+          "bind": "legend"
+        },
         {
           "name": "country_legend",
           "select": {"type": "point", "on": "click", "fields": ["Country"]},
@@ -150,11 +156,11 @@
       "encoding": {
         "y": {"field": "rank"},
         "color": {
-          "condition":  {"param": "country_legend", "empty": false, "value": "black"} ,
+          "condition":  {"param": "highlight", "empty": false, "value": "black"} ,
           "field": "Country"
         },
         "opacity": {
-          "condition": {"param": "country_legend", "value": 1},
+          "condition": {"param": "highlight", "value": 1},
           "value": 0.2
         }
       }
