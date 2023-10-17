@@ -1,4 +1,4 @@
-"Country","Year","Daily.Cigarettes","Total.Smokers","Total.Female.Smokers","Total.Male.Smokers","Population","Continent","rank"
+"Country","Year","Daily_Cigarettes","Total_Smokers","Total_Female_Smokers","Total_Male_Smokers","Population","Continent","Rank"
 "Afghanistan",1980,5.6999998,733520,81707,651813,13356500,"Asia",134
 "Afghanistan",1981,5.8000002,720102,79276,640826,13171679,"Asia",134
 "Afghanistan",1982,5.8000002,700415,76061,624355,12882518,"Asia",134
