@@ -1,4 +1,4 @@
-"Country","Year","Daily_Cigarettes","Total_Smokers","Total_Female_Smokers","Total_Male_Smokers","Population","Continent","Rank","GDP","Deaths.that.are.from.all.causes.attributed.to.smoking.per.100.000.people..in.both.sexes.aged.age.standardized"
+"Country","Year","Daily_Cigarettes","Total_Smokers","Total_Female_Smokers","Total_Male_Smokers","Population","Continent","Rank","GDP","Deaths"
 "Afghanistan",2002,3.7,1329825,131469,1198356,22600774,"Asia",130,179.426579211394,81.54692
 "Afghanistan",2003,3.8,1390046,137947,1252098,23680871,"Asia",128,190.683814295088,80.83506
 "Afghanistan",2004,3.8,1449475,144378,1305098,24726689,"Asia",129,211.382074198939,80.39753
